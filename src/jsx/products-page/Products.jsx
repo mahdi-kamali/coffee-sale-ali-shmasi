@@ -263,7 +263,7 @@ const Products = () => {
                     }
                 </div>
                 <div className="right-buttons">
-                    <button style={{ zIndex: 10 }}>
+                    <button >
                         فیلتر کردن
                         <Icon icon="ant-design:setting-filled" color="white" />
                     </button>

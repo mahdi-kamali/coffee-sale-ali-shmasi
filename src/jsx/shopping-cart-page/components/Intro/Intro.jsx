@@ -1,7 +1,9 @@
-import { ReactComponent as IntroSVG } from "../../../../svgs/11.svg"
+import { ReactComponent as FirstSVG } from "../../../../svgs/shopping-cart/log-in.svg"
+import { ReactComponent as SecondSVG } from "../../../../svgs/shopping-cart/location.svg"
+import { ReactComponent as ThirdSVG } from "../../../../svgs/shopping-cart/date.svg"
+import { ReactComponent as FourthSVG } from "../../../../svgs/shopping-cart/pay.svg"
 import { Icon } from '@iconify/react';
 import Step from "./components/Step";
-import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux/es/exports"
 import { useEffect } from "react";
@@ -11,21 +13,16 @@ import { setSteps } from "../../../features/shoppingCart";
 const Intro = () => {
 
 
-
-    const steps = useSelector(state => state.shoppingCart.value.steps)
     const user = useSelector(state => state.user.value)
+    const steps = useSelector(state => state.shoppingCart.value.steps)
     const location = useSelector(state => state.shoppingCart.value.location)
-
-    // console.log(location);
-    // console.log( user);
+    const date = useSelector(state => state.shoppingCart.value.date)
 
     const dispatcher = useDispatch()
-
 
     function setCurrentStep(index) {
         dispatcher(setSteps(index))
     }
-
 
     useEffect(() => {
 
@@ -45,10 +42,19 @@ const Intro = () => {
             setCurrentStep(3)
         }
 
+        if (date === undefined || date === null || date === '') {
+            setCurrentStep(3)
+            return
+        }
+        else {
+            setCurrentStep(4)
+        }
+
     },
         [
             user,
-            location
+            location,
+            date
         ])
 
 
@@ -70,7 +76,10 @@ const Intro = () => {
                 </div>
             </div>
             <div className="right">
-                <IntroSVG />
+                {steps[0].selected ? <FirstSVG /> : ''}
+                {steps[1].selected ? <SecondSVG /> : ''}
+                {steps[2].selected ? <ThirdSVG /> : ''}
+                {steps[3].selected ? <FourthSVG /> : ''}
             </div>
 
         </section>

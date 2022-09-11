@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useSelector } from "react-redux"
 import Cart from "./components/cart/Cart"
 import DeliveryAddress from "./components/delivery-address/DeliveryAddress"
@@ -10,8 +9,6 @@ import Intro from "./components/Intro/Intro"
 
 const ShoppingCart = () => {
 
-    const user = useSelector(state => state.user.value)
-    const location = useSelector(state => state.shoppingCart.value.location)
 
 
     return (
@@ -23,8 +20,8 @@ const ShoppingCart = () => {
             <div className="shopping-cart-right">
                 <Intro />
                 <DeliveryUser />
-                {!user ? <DeliveryAddress /> : ''}
-                {user ? <DeliveryDate /> : ''}
+                <DeliveryAddress />
+                <DeliveryDate />
                 <Cart />
             </div>
         </div>

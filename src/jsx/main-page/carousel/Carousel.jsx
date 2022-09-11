@@ -21,7 +21,9 @@ import SlideData from './components/SlideData'
 
 
 
-const Carousel = () => {
+const Carousel = ({ count }) => {
+
+    console.log(count);
 
     const [samples, setSample] = useState([
         {
@@ -132,15 +134,26 @@ const Carousel = () => {
 
     const [size, setSize] = useState(5);
 
+    const [swiper, setSwiper] = useState()
 
 
 
     return (
         <Swiper
+            onSwiper={setSwiper}
             className='swiper'
             slidesPerView={size}
             spaceBetween={16}
-            onResize={() => { window.innerWidth > 1500 ? setSize(5.5) : setSize(window.innerWidth / 300) }}
+            onResize={() => {
+                if (swiper) {
+                    setSize(swiper.width / 280)
+                } else {
+                    window.innerWidth > 1500 ?
+                        setSize(count ? count : 5.5) :
+                        setSize(swiper.width / 300)
+                }
+
+            }}
             freeMode={true}
             navigation={true}
             modules={[FreeMode, Navigation]}

@@ -12,9 +12,10 @@ const Day = (props) => {
     7: { dayName: 'جمعه', date: 27 },
   }
 
+
   return (
-    <div className={` ${props.selected ? 'selected' : ''} day `} 
-    onClick={() => { props.setSelected(props.dayIndex) }}>
+    <div className={` ${props.selected ? 'selected' : ''} day `}
+      onClick={() => { props.setSelected(props.dayIndex); }}>
       <span>{days[props.dayIndex].date}</span>
       <h1>{days[props.dayIndex].dayName}</h1>
     </div>

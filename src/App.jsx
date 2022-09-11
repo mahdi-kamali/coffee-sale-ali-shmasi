@@ -17,13 +17,14 @@ import ChangeAddress from './jsx/shopping-cart-page/components/delivery-address/
 
 //  React Redux & Slices
 import { configureStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 
 // Slices
 import windowsSlice from './jsx/features/windows';
 import userSlice from './jsx/features/user';
 import filterSlice from './jsx/features/filters';
 import shoppingCart from './jsx/features/shoppingCart';
+import ProductDetail from './jsx/product-detail-page/ProductDetail';
 
 
 const store = configureStore({
@@ -37,16 +38,19 @@ const store = configureStore({
 
 
 function App() {
+
   return (
     <Provider store={store}>
       <div className="App" lang='fa'  >
         <BrowserRouter >
           <Header />
 
+          
           {/* Pop Windows */}
           <UserPage />
           <ChangeAddress />
           <Alert />
+          <ProductDetail />
 
           {/* Routes */}
           <Routes>

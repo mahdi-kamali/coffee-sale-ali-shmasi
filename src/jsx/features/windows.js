@@ -1,12 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
+function setBodyOverFlow(state) {
+    if (state === 'close' || state === 'hide') {
+        document.body.style.overflow = 'auto'
+    }
+    if (state === 'show' || state === 'open' || state === 'sign-in' || state === 'sign-up') {
+        document.body.style.overflow = 'hidden'
+    }
+}
+
+
 export const windowsSlice = createSlice({
     name: 'windows',
     initialState: {
         value: {
             user: {
-                // type : 'login'
-                // type : 'signin'
+                // type : 'sign-in'
+                // type : 'sign-up'
                 // type : 'close'
                 type: 'close'
             },
@@ -24,13 +36,18 @@ export const windowsSlice = createSlice({
             changeAddress: {
                 // state : 'close'
                 // state : 'show'
-                state: 'show'
+                state: 'close',
+            },
+            productDetail: {
+                state: 'hide',
             }
         }
     },
     reducers: {
+
         setUserWindow: (state, action) => {
-            state.value['user'] = action.payload
+            state.value.user = action.payload
+            setBodyOverFlow(action.payload.type)
         },
         setAlertWindow: (state, action) => {
             const tempValue = {}
@@ -48,6 +65,11 @@ export const windowsSlice = createSlice({
         },
         setChangeAddressWindow: (state, action) => {
             state.value.changeAddress.state = action.payload
+            setBodyOverFlow(action.payload)
+        },
+        setProductDetailWindow: (state, action) => {
+            state.value.productDetail.state = action.payload
+            setBodyOverFlow(action.payload)
         }
 
     }
@@ -55,4 +77,4 @@ export const windowsSlice = createSlice({
 
 export default windowsSlice.reducer
 
-export const { setUserWindow, setAlertWindow, setChangeAddressWindow } = windowsSlice.actions
+export const { setUserWindow, setAlertWindow, setChangeAddressWindow, setProductDetailWindow } = windowsSlice.actions

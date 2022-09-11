@@ -4,8 +4,9 @@
 }
 
 @font-face {
+    // src: url("../font/BYekan.ttf");
     font-family: "BYekan";
-    src: url("../font/BYekan.ttf");
+    src: url("../font/IranYekan-Medium.woff");
 }
 
 @font-face {
@@ -22,6 +23,7 @@ $main-page-color-1: #3f4042;
 $main-page-color-2: #fdfeff;
 $main-page-color-3: #9abd3f;
 $main-page-color-4: #ef3a4f;
+$main-page-color-5: #b7ff00;
 
 $secondary-color-1: #4c4123;
 $secondary-color-2: #68edcb;
@@ -33,9 +35,14 @@ $discount-color: $main-page-color-4;
 $top-sales-color: $main-page-color-3;
 
 // Shopping cart
-
 $shopping-cart-border-color: #e0e0e2;
 $shopping-cart-border-size: 1px;
+$shopping-cart-buttons-font-size: 0.8rem;
+$shopping-cart-buttons-vertical-padding: 0.4em;
+$shopping-cart-buttons-horizontal-padding: 1.5em;
+$shopping-cart-header-font-size: 0.9rem;
+$shopping-cart-header-svg-size: 1.5rem;
+$shopping-cart-header-body-gap: 1.5rem;
 
 html {
     display: flex;
@@ -70,6 +77,7 @@ body {
     max-width: 1600px;
     overflow-y: scroll;
     position: relative;
+    padding: 0 2em;
 }
 
 header {
@@ -317,13 +325,22 @@ label {
     transition: box-shadow 0.3s ease;
     user-select: none;
     cursor: pointer;
+
+    &:hover {
+        img {
+            scale: 1.1;
+        }
+    }
+
     .card-header {
         all: unset;
+        overflow: hidden;
         img {
             width: 100%;
             aspect-ratio: 1/1;
             object-fit: cover;
             border-radius: 0.5rem 0.5rem 0 0;
+            transition: scale 0.5s ease;
         }
     }
     .card-body {
@@ -461,7 +478,7 @@ label {
     position: fixed;
     right: 2.5%;
     bottom: 5%;
-    z-index: 6;
+    z-index: 999;
     width: max-content;
     transition: all 0.5s ease;
     .container {
@@ -527,7 +544,7 @@ label {
     align-items: center;
     justify-content: center;
     .container {
-        width: 18rem;
+        width: 20rem;
         background-color: white;
         border-radius: 0.5rem;
         position: relative;
@@ -559,7 +576,6 @@ label {
                 width: 15rem;
             }
         }
-
         .change-address-header {
             font-size: 0.9rem;
             text-align: center;
@@ -580,23 +596,22 @@ label {
                 transition: all 0.2s ease;
                 padding-left: 1.5em;
                 position: relative;
-                .eye {
-                    user-select: none;
-                    cursor: pointer;
-                    left: 0.5rem;
-                    top: 0;
-                    position: absolute;
-                    .show-password-svg {
-                        width: 1.3rem;
-                        height: 1.3rem;
-                    }
-                }
-
-                input {
-                    all: unset;
+                textarea {
                     width: 100%;
-                    padding: 0em 0.7em 0.4em 0.7em;
-                    font-size: 0.8rem;
+                    resize: none;
+                    border: none !important;
+                    outline: none !important;
+                    overflow: auto;
+                    padding: 0.3em 0.7em 0.4em 0.7em;
+                    font-size: 0.7rem;
+                    font-family: "iranSens";
+                    height: 99rem;
+                    max-height: 1.25rem;
+                    transition: max-height 0.3s ease-out;
+                }
+                .clicked {
+                    height: 8rem;
+                    max-height: 8rem;
                 }
                 &:hover {
                     border: 0.1rem rgba(0, 0, 0, 0.5) solid;
@@ -613,6 +628,28 @@ label {
                         width: 1.5rem;
                         height: 1.5rem;
                     }
+                }
+            }
+        }
+        .change-address-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            button {
+                all: unset;
+                min-width: 7ch;
+                text-align: center;
+                color: white;
+                font-size: $shopping-cart-buttons-font-size;
+                padding: $shopping-cart-buttons-vertical-padding $shopping-cart-buttons-horizontal-padding;
+                border-radius: 0.3rem;
+                &:first-child {
+                    background-color: $main-page-color-3;
+                }
+                &:last-child {
+                    background-color: $main-page-color-4;
                 }
             }
         }
@@ -649,7 +686,7 @@ label {
             color: white;
         }
         .slider {
-            height: 60vh;
+            height: 55vh;
             .swiper-pagination {
                 background-color: white;
                 width: max-content;
@@ -1037,7 +1074,6 @@ label {
             grid-template-columns: 50% 50%;
             gap: 1rem;
         }
-
         .image-articles {
             display: flex;
             align-items: flex-start;
@@ -1051,9 +1087,9 @@ label {
                 }
                 .header {
                     position: absolute;
-                    width: 30%;
+                    width: 13rem;
                     overflow: hidden;
-                    padding: 2em 3em;
+                    padding: 2em 2em;
                     border-radius: 0 0.5rem 0.5rem 0rem;
                     right: 3rem;
                     top: 0;
@@ -1066,6 +1102,7 @@ label {
                     transform: translateX(100%);
                     transition: all 0.5s ease;
                     opacity: 0;
+                    height: 100%;
                     .info {
                         display: flex;
                         flex-direction: row-reverse;
@@ -1094,7 +1131,7 @@ label {
                     }
                     .subject {
                         direction: rtl;
-                        margin-top: 50%;
+                        margin-top: 20%;
                         font-size: 1.1rem;
                     }
                     .description {
@@ -1104,7 +1141,7 @@ label {
                         overflow: hidden;
                         text-overflow: ellipsis;
                         display: -webkit-box;
-                        -webkit-line-clamp: 7; /* number of lines to show */
+                        -webkit-line-clamp: 4; /* number of lines to show */
                         -webkit-box-orient: vertical;
                         margin-top: 1rem;
                     }
@@ -1298,6 +1335,11 @@ label {
                     border-radius: 0.4rem;
                     font-size: 0.9rem;
                 }
+                .selected {
+                    background-color: $main-page-color-4;
+                    border-color: transparent;
+                    color: white;
+                }
             }
         }
         .delivery {
@@ -1336,8 +1378,17 @@ label {
         display: flex;
         flex-direction: column;
         gap: 0.7rem;
+        border-radius: 0.5rem;
+
         section {
             position: relative;
+            flex-wrap: wrap;
+            transition: all 1s ease;
+        }
+        .off-section {
+            opacity: 0.3;
+            pointer-events: none;
+            filter: blur(0.5px);
         }
         .mark {
             position: absolute;
@@ -1362,17 +1413,20 @@ label {
                 font-family: "BYekan";
                 background-color: #ef3a4f;
                 color: white;
+                position: relative;
+                animation: markAnimation 2s linear infinite;
             }
         }
         .shopping-cart-intro {
             display: grid;
-            grid-template-columns: 1fr 15rem;
-
+            align-self: center;
+            grid-template-columns: max-content 13rem;
+            gap: 2rem;
             .left {
                 padding: 1em 2em;
                 display: flex;
                 flex-direction: column;
-                gap: 1rem;
+                gap: $shopping-cart-header-body-gap;
                 padding: 0;
                 justify-content: center;
 
@@ -1412,8 +1466,8 @@ label {
                             background-color: $main-page-color-4;
                             color: white;
                             width: max-content;
-                            width: 2.4ch;
-                            height: 2.4ch;
+                            width: 3ch;
+                            height: 3ch;
                             border-radius: 50%;
                             font-family: "BYekan";
                             font-family: 0.9rem;
@@ -1437,7 +1491,6 @@ label {
                 display: flex;
                 align-items: center;
                 svg {
-                    width: 100%;
                 }
             }
         }
@@ -1446,47 +1499,87 @@ label {
             border: $shopping-cart-border-size $shopping-cart-border-color solid;
             border-radius: 0.5rem;
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 1rem;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            gap: $shopping-cart-header-body-gap;
+
             .delivery-user-header {
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                font-size: $shopping-cart-header-font-size;
+                svg {
+                    width: $shopping-cart-header-svg-size;
+                    height: $shopping-cart-header-svg-size;
+                }
             }
             .delivery-user-body {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                align-self: flex-end;
                 gap: 0.7rem;
-                button {
-                    all: unset;
+                width: auto;
+                .buttons {
+                    display: flex;
+                    gap: 0.7rem;
+                    button {
+                        all: unset;
+                        display: flex;
+                        flex-direction: row-reverse;
+                        font-size: $shopping-cart-buttons-font-size;
+                        padding: $shopping-cart-buttons-vertical-padding $shopping-cart-buttons-horizontal-padding;
+                        border: 0.1rem $main-page-color-4 solid;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.3rem;
+
+                        border-radius: 0.3rem;
+                        min-width: 10ch;
+
+                        svg {
+                            width: 1.2rem;
+                            height: 1.2rem;
+                        }
+                    }
+
+                    .sign-up {
+                        background-color: $main-page-color-4;
+                        color: white;
+                        path {
+                            fill: white;
+                        }
+                    }
+
+                    .sign-in {
+                        color: $main-page-color-4;
+                        path {
+                            fill: $main-page-color-4;
+                        }
+                    }
+                }
+                .info {
                     display: flex;
                     flex-direction: row-reverse;
-                    font-size: 0.8rem;
                     align-items: center;
-                    justify-content: center;
-                    gap: 0.3rem;
-                    padding: 0.4em 1.5em;
-                    border-radius: 0.3rem;
-                    border: 0.1rem $main-page-color-4 solid;
-                    min-width: 10ch;
+                    gap: 1rem;
 
-                    svg {
-                        width: 1.2rem;
-                        height: 1.2rem;
-                    }
-                }
-
-                .sign-up {
-                    background-color: $main-page-color-4;
-                    color: white;
-                    path {
-                        fill: white;
-                    }
-                }
-
-                .sign-in {
-                    color: $main-page-color-4;
-                    path {
-                        fill: $main-page-color-4;
+                    h1,
+                    h2,
+                    h3 {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        font-weight: normal;
+                        font-size: $shopping-cart-buttons-font-size;
+                        padding: 0.5em 0.7em;
+                        background-color: rgba(0, 0, 0, 0.05);
+                        border-radius: 0.3rem;
+                        // color: white;
+                        span {
+                            direction: rtl;
+                        }
                     }
                 }
             }
@@ -1498,20 +1591,21 @@ label {
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             .left {
                 padding-left: 1em;
                 button {
                     all: unset;
-                    background-color: $main-page-color-4;
-                    color: white;
+                    color: $main-page-color-4;
+                    border: 0.1rem solid $main-page-color-4;
                     display: flex;
                     align-items: center;
                     gap: 0.2rem;
-                    font-size: 0.9rem;
-                    padding: 0.4em 1.5em;
+                    font-size: $shopping-cart-buttons-font-size;
+                    padding: $shopping-cart-buttons-vertical-padding $shopping-cart-buttons-horizontal-padding;
                     border-radius: 0.3rem;
                     path {
-                        fill: white;
+                        fill: $main-page-color-4;
                     }
                 }
             }
@@ -1520,16 +1614,34 @@ label {
                 flex-direction: column;
                 align-items: flex-end;
                 padding: 1em;
-                gap: 0.5rem;
+
                 h1 {
-                    font-size: 0.7rem;
-                    opacity: 0.6;
+                    font-size: $shopping-cart-header-font-size;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    svg {
+                        width: $shopping-cart-header-svg-size;
+                        height: $shopping-cart-header-svg-size;
+                    }
                 }
-                span {
+                span,
+                small {
+                    margin-top: 1rem;
                     display: flex;
                     align-items: center;
                     gap: 0.5rem;
-                    font-size: 0.9rem;
+                    font-size: 0.8rem;
+                    opacity: 0.7;
+                    padding-right: $shopping-cart-header-svg-size;
+                    svg {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+                small {
+                    margin-top: 0.25rem;
                 }
             }
         }
@@ -1540,15 +1652,25 @@ label {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 1rem;
+            gap: $shopping-cart-header-body-gap;
+
             .date-header {
-                font-size: 0.7rem;
-                opacity: 0.6;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: $shopping-cart-header-font-size;
+                svg {
+                    width: $shopping-cart-header-svg-size;
+                    height: $shopping-cart-header-svg-size;
+                    padding-bottom: 0.25em;
+                }
             }
             .date-body {
                 display: flex;
                 flex-direction: row-reverse;
                 gap: 0.5rem;
+                justify-content: center;
+                width: 100%;
                 .day {
                     display: flex;
                     flex-direction: column-reverse;
@@ -1564,16 +1686,15 @@ label {
                     border: 0.1rem transparent solid;
 
                     &:hover {
-                        // #ef3a4f
-                        border: 0.1rem #ef3a4f27 solid;
+                        border: 0.1rem #ef3a4f3a solid;
                     }
                     h1 {
                         font-size: 0.8rem;
                     }
                     span {
                         font-family: "BYekan";
-                        width: 4ch;
-                        height: 4ch;
+                        width: 3.5ch;
+                        height: 3.5ch;
                         color: black;
                         display: flex;
                         align-items: center;
@@ -2042,14 +2163,923 @@ label {
     }
 }
 
+.product-detail-page {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 6;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .buttons {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        position: sticky;
+        top: 4rem;
+        z-index: 7;
+        background-color: $main-page-color-2;
+
+        width: max-content;
+        button {
+            all: unset;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            font-size: 1.3rem;
+            position: relative;
+            color: white;
+
+            &:nth-child(1) {
+                width: max-content;
+                height: max-content;
+                font-size: 1.25rem;
+                border-radius: 0;
+                gap: 0.25rem;
+                margin-right: 0.5em;
+                color: black;
+            }
+            &:nth-child(3) {
+                background-color: $main-page-color-4;
+            }
+            &:nth-child(2) {
+                background-color: $main-page-color-3;
+                span {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    font-size: 0.8rem;
+                    border-radius: 50%;
+                    background-color: $main-page-color-4;
+                }
+            }
+        }
+    }
+    .container {
+        all: unset;
+        width: 80%;
+        max-height: 100%;
+        overflow: auto;
+        // border-radius: 0.5rem;
+        position: relative;
+        animation: windowOpenAnimation 0.5s ease forwards;
+        // background: linear-gradient(0deg, $main-page-color-3 50%, white 50%);
+        // background: linear-gradient(180deg, $main-page-color-3 50%, white 50%);
+        // background: linear-gradient(45deg, $main-page-color-3 50%, white 50%);
+        background: linear-gradient(290deg, $main-page-color-3 35%, white 35%);
+        background-color: white;
+        padding: 4em;
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .product-info-one {
+            display: grid;
+            grid-template-columns: 1fr 18rem;
+            gap: 1rem;
+            .body {
+                border-radius: 0.5rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                height: max-content;
+                direction: rtl;
+                padding: 4em;
+                background: linear-gradient(200deg, $main-page-color-2 20%, transparent 100%);
+                grid-column-gap: 4rem;
+
+                .border {
+                    border-bottom: 2px solid transparent;
+                    border-image: linear-gradient(
+                        0.25turn,
+                        transparent 0%,
+                        rgba(150, 150, 150, 0.25) 50%,
+                        transparent 100%
+                    );
+                    border-image-slice: 1;
+                    width: 100%;
+                    padding-bottom: 1.5em;
+                }
+                .header {
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                }
+                .address {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 0.7rem;
+                    gap: 0.5rem;
+                    font-size: 0.8rem;
+                    width: 100%;
+                    span {
+                        svg {
+                            path {
+                                fill: black;
+                            }
+                        }
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.5rem;
+                        cursor: pointer;
+                        &:last-child {
+                            svg {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                .ratings {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 0.7rem;
+                    font-size: 0.8rem;
+                    width: 100%;
+                    h1 {
+                        font-size: 0.7rem;
+                        font-weight: bold;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3rem;
+                        svg {
+                            width: 1.4em;
+                            height: 1.4em;
+                        }
+                    }
+                    span {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        &:nth-child(2) {
+                            margin-right: 0.5rem;
+                            margin-left: 0.25rem;
+                        }
+                        &:nth-child(3) {
+                            font-family: "BYekan";
+                            font-size: 1rem;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .available {
+                    margin-top: 0.7rem;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    h1 {
+                        font-size: 0.7rem;
+                        font-weight: bold;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3rem;
+                        svg {
+                            width: 1.4em;
+                            height: 1.4em;
+                        }
+                    }
+                    span {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3rem;
+                        color: white;
+                        font-size: 0.75rem;
+                        padding: 0.4em 1em;
+                        border-radius: 2rem;
+                    }
+                    .green {
+                        background-color: $main-page-color-3;
+                    }
+                    .red {
+                        background-color: $main-page-color-4;
+                    }
+                }
+                .shipping {
+                    margin-top: 0.7rem;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    h1 {
+                        font-size: 0.7rem;
+                        font-weight: bold;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3rem;
+                        svg {
+                            width: 1.4em;
+                            height: 1.4em;
+                        }
+                    }
+                    span {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3rem;
+                        color: white;
+                        font-size: 0.75rem;
+                        padding: 0.4em 1em;
+                        border-radius: 2rem;
+                    }
+                    .green {
+                        background-color: $main-page-color-3;
+                    }
+                    .yellow {
+                        background-color: yellow;
+                        color: black;
+                    }
+                }
+                .description {
+                    max-height: 15rem;
+                    overflow: hidden;
+                    margin-top: 3rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    h1 {
+                        font-size: 0.9rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.4rem;
+                        font-weight: bold;
+                        svg {
+                            width: 1rem;
+                            height: 1rem;
+                        }
+                    }
+                    p {
+                        font-size: 0.8rem;
+                        line-height: 1.8;
+                    }
+                }
+                .properties {
+                    margin-top: 3rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    width: max-content;
+                    h1 {
+                        font-size: 0.9rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.4rem;
+                        font-weight: bold;
+                        svg {
+                            width: 1rem;
+                            height: 1rem;
+                        }
+                    }
+                    .properties-body {
+                        display: flex;
+                        flex-direction: column;
+                        padding-right: 2em;
+                        gap: 0.5rem;
+                        li {
+                            font-size: 0.8rem;
+                            font-weight: lighter;
+                            list-style-type: disc !important;
+                        }
+                    }
+                }
+                .progress {
+                    margin-top: 3rem;
+                    display: flex;
+                    flex-direction: column;
+                    width: min(30rem, 100%);
+                    gap: 1.5rem;
+                    h1 {
+                        font-size: 0.9rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.4rem;
+                        font-weight: bold;
+                        svg {
+                            width: 1rem;
+                            height: 1rem;
+                        }
+                    }
+                    .progress-body {
+                        width: 100%;
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+                        grid-gap: 1rem 1rem;
+                        .line-pr {
+                            box-shadow: 0.3rem 0.3rem 0.5rem 0.05rem rgba(0, 0, 0, 0.1);
+                            padding: 0.5em 1em;
+                            border-radius: 0.3rem;
+                            span {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                                gap: 0.3rem;
+                                font-size: 0.8rem;
+                                svg {
+                                    width: 1.5em;
+                                    height: 1.5em;
+                                }
+                                .title {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 0.3rem;
+                                }
+                                small {
+                                    font-size: 0.6rem;
+                                }
+                            }
+                            .rc-progress-line {
+                                transform: rotate(180deg);
+                            }
+                        }
+                    }
+                }
+                .form-one {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    margin-top: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    direction: rtl;
+
+                    h1 {
+                        font-size: 0.9rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.4rem;
+                        font-weight: bold;
+                        svg {
+                            width: 1rem;
+                            height: 1rem;
+                        }
+                    }
+                    .form-container {
+                        // box-shadow: inset 0 0 2rem 0.05rem rgba(0, 0, 0, 0.2);
+                        padding: 2em;
+                        padding-top: 0;
+                        border-radius: 0.7rem;
+                    }
+                    .form-group {
+                        display: flex;
+                        gap: 1rem;
+                        padding-bottom: 0.5em;
+                        border-bottom: $shopping-cart-border-color $shopping-cart-border-size solid;
+                        font-size: 0.8rem;
+                        padding: 2em 0;
+                        label {
+                            font-weight: bold;
+                            min-width: 10ch;
+                            align-self: center;
+                        }
+                        &:last-child {
+                            border: none;
+                        }
+                    }
+                    .select {
+                        .options {
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            gap: 1rem;
+                            label {
+                                all: unset;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 0.3rem;
+                                min-width: 15ch;
+                                padding: 0.8em 1.2em;
+                                border-radius: 10rem;
+                                text-align: center;
+                                cursor: pointer;
+                                box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.15);
+                                font-size: 0.6rem;
+                                transition: all 0.5s ease;
+                            }
+                            .selected {
+                                background-color: $main-page-color-5;
+                                border-color: transparent;
+                                color: black;
+                                opacity: 1;
+                            }
+                            &:last-child {
+                            }
+                        }
+                    }
+                }
+            }
+            .right {
+                background-color: rgb(255, 255, 255);
+                border-radius: 0.5rem;
+                box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
+                padding: 2em;
+                width: 16rem;
+                top: 3em;
+                height: max-content;
+                position: sticky;
+                .gallery {
+                    // height: max-content;
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        cursor: pointer;
+                        transition: all 0.5s ease;
+                        border-radius: 0.5rem;
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                    }
+                    .my-swiper-1 {
+                        width: 100%;
+                    }
+                    .my-swiper-2 {
+                        width: 100%;
+                        padding-bottom: 4em;
+                    }
+                }
+                .price {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    gap: 1rem;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    h1 {
+                        font-size: 0.5rem;
+                    }
+                    span {
+                        display: flex;
+                        flex-direction: row-reverse;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.5rem;
+                        font-size: 1.6rem;
+                        font-weight: bold;
+                        font-family: "BYekan";
+                        small {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+                .add-to-cart {
+                    border-radius: 0.3rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 1rem;
+                    gap: 0.5rem;
+                    flex-wrap: wrap;
+                    button {
+                        all: unset;
+                        width: min(10ch, 100%);
+                        height: max-content;
+                        color: white;
+                        gap: 0.25rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: $shopping-cart-buttons-font-size;
+                        padding: $shopping-cart-buttons-vertical-padding $shopping-cart-buttons-horizontal-padding;
+                        border-radius: 0.3rem;
+                        border: 0.1rem transparent solid;
+                        svg {
+                            width: 1.3em;
+                            height: 1.3em;
+                        }
+                        &:first-child {
+                            border-color: $main-page-color-4;
+                            color: $main-page-color-4;
+                        }
+                        &:last-child {
+                            background-color: $main-page-color-3;
+                        }
+                    }
+                    .active {
+                        background-color: $main-page-color-4;
+                        color: white !important;
+                    }
+                }
+                .delivery {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 2rem;
+                    padding: 0 0.5em;
+                    gap: 1rem;
+                    .delivery-header {
+                        text-align: right;
+                        h1 {
+                            font-size: 1rem;
+                        }
+                        p {
+                            font-size: 0.7rem;
+                        }
+                    }
+                    .delivery-body {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        svg {
+                            width: 2.5rem;
+                            height: 2.5rem;
+                        }
+                    }
+                }
+            }
+        }
+        .product-supports {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            .item {
+                flex-basis: min(13.7rem, 100%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 20rem;
+                min-height: 7.5rem;
+                padding: 1.5em 2em;
+                gap: 0.5rem;
+                background-color: white;
+                border-radius: 0.5rem !important;
+                .item-header {
+                    display: flex;
+                    align-items: center;
+                    svg {
+                        width: 2.5rem;
+                        height: 2.5rem;
+                    }
+                }
+                .item-body {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.5rem;
+                    direction: rtl;
+                    h1 {
+                        font-size: 1rem;
+                        font-weight: bold;
+                    }
+                    small {
+                        font-size: 0.7rem;
+                        opacity: 0.8;
+                    }
+                }
+
+                &:first-child {
+                    border-radius: 0.5rem 0 0rem 0.5rem;
+                }
+                &:last-child {
+                    border-radius: 0rem 0.5rem 0.5rem 0rem;
+                }
+            }
+        }
+        .product-comments {
+            background-color: white;
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            gap: 1rem;
+            .comments-header {
+                display: grid;
+                grid-template-columns: 1fr 30rem;
+                .right {
+                    svg {
+                    }
+                }
+                .left {
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
+                    flex-direction: column;
+                    text-align: right;
+                    gap: 0.5rem;
+                    h1 {
+                        font-size: 1.5rem;
+                    }
+                    p {
+                        font-size: 0.8rem;
+                    }
+                    .user-state {
+                        width: 100%;
+                        display: grid;
+                        grid-template-columns: 1fr 11rem;
+                        gap: 0.5rem;
+                        margin-top: 1rem;
+                        gap: 1rem;
+                        align-tracks: end;
+
+                        .not-signed {
+                           display: flex;
+                           flex-direction: column;
+                           align-items: flex-end;
+                           grid-column: -1/1;
+                           gap: 1rem;
+                           .buttons {
+                            display: flex;
+                            flex-direction: row-reverse;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 0.5rem;
+                            button {
+                                
+                                all: unset;
+                                min-width: 6ch;
+                                text-align: center;
+                                color: white;
+                                padding: $shopping-cart-buttons-vertical-padding $shopping-cart-buttons-horizontal-padding;
+                                border-radius: 0.3rem;
+                                font-size: 0.8rem;
+                                &:first-child {
+                                    background-color: $main-page-color-3;
+                                }
+                                &:last-child {
+                                    background-color: $main-page-color-4;
+                                }
+                            }
+                           }
+                        }
+                      
+                        .form-left {
+                            height: 100%;
+                            display: flex;
+                            .form-group{
+                                display: flex;
+                                flex-direction: column;
+                                min-height: 100%;
+                                justify-content: start;
+                                align-items: flex-end;
+                                gap: 1rem;
+                                textarea {
+                                    direction: rtl;
+                                    font-family: "iranSens", sans-serif;
+                                    resize: none !important;
+                                    width: calc(100% - 2em);
+                                    border: 0.1rem solid rgba(0, 0, 0, 0.1) !important;
+                                    outline: none !important;
+                                    border-radius: 0.3rem;
+                                    transition: all ease 0.5s;
+                                    box-shadow: 0rem 0rem 0.5rem 0.1rem transparent;
+                                    padding: 1em;
+                                    overflow: auto;
+                                    height: 5rem;
+                                    &:focus {
+                                        border: 0.1rem solid rgba(0, 0, 0, 0.5) !important;
+                                        box-shadow: 0rem 0rem 1rem 0.1rem rgba(0, 0, 0, 0.1);
+                                        height: 20rem;
+                                    }
+                                }
+                                button {
+                                    all: unset;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    gap: 0.3rem;
+                                    background-color: $main-page-color-4;
+                                    color: white;
+                                    padding: 0.3em 1em;
+                                    font-size: 0.8rem;
+                                    border-radius: 0.3rem;
+                                }
+                            }
+                         
+                        }
+                        .form-right {
+                            border: $shopping-cart-border-size $shopping-cart-border-color solid;
+                            border-radius: 0.5rem;
+                            padding: 1em;
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+                            height: max-content;
+                            align-self: center;
+                            gap: 0.25rem;
+                            background-color: $main-page-color-3;
+                            color: white;
+                            margin-bottom: auto;
+                            box-shadow: 0.2rem 0.2rem 0.3rem 0.1rem rgba(0, 0, 0, 0.1);
+                            #first {
+                                margin-top: 1rem;
+                            }
+                        }
+                        .form-group {
+                            width: 100%;
+                            img {
+                                width: 5rem;
+                                border-radius: 50%;
+                                margin: 0 auto;
+                            }
+                            label {
+                                display: flex;
+                                flex-direction: row-reverse;
+                                align-items: center;
+                                justify-content: space-between;
+                                gap: 0.5rem;
+                                width: 100%;
+                                span {
+                                    direction: rtl;
+                                    width: 50%;
+                                    font-size: 0.7rem;
+                                }
+                                marquee {
+                                    font-size: 0.8rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .comments-body {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(min(24rem, 100%), 1fr));
+                flex-direction: column;
+                padding: 0 2em;
+                gap: 1rem;
+                .item {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 1rem;
+                    direction: rtl;
+                    box-shadow: 0rem 0.5rem 0.5rem 0.1rem rgba(0, 0, 0, 0.05);
+                    border-radius: 0.5rem;
+                    padding: 2em;
+                    height: max-content;
+                    position: relative;
+                    .item-header {
+                        svg,
+                        img {
+                            width: 2.5rem;
+                            height: 2.5rem;
+                            object-fit: cover;
+                        }
+                    }
+                    .item-body {
+                        display: flex;
+                        flex-direction: column;
+
+                        .name {
+                            font-size: 0.9rem;
+                            font-weight: bold;
+                        }
+                        .date {
+                            font-family: "BYekan";
+                            font-size: 0.8rem;
+                        }
+                        .body {
+                            margin-top: 1rem;
+                            font-size: 0.75rem;
+                            opacity: 0.8;
+                            text-align: right;
+                            padding-right: 1em;
+                            overflow: auto;
+                            min-height: 5rem;
+                            max-height: 7rem;
+                            direction: ltr;
+                            line-height: 1.9;
+                        }
+                        .reply {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            margin-top: 0.5rem;
+                            button {
+                                margin-right: 1em !important;
+                            }
+                            .reply-header {
+                                display: flex;
+                                .reply-btn {
+                                    all: unset;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    gap: 0.5rem;
+                                    // background-color: $main-page-color-1;
+                                    border: 0.1rem $main-page-color-1 solid;
+                                    color: $main-page-color-1;
+                                    font-size: $shopping-cart-buttons-font-size;
+                                    padding: 0.3em 1em;
+                                    border-radius: 0.3rem;
+                                    &:hover {
+                                        background-color: $main-page-color-1;
+                                        color: white;
+                                    }
+                                }
+                            }
+                            .reply-body {
+                                width: 100%;
+                                height: 0;
+                                overflow: hidden;
+                                transition: all 0.5s ease;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 1rem;
+                                align-items: flex-start;
+                                button {
+                                    all: unset;
+                                    display: flex;
+                                    flex-direction: row-reverse;
+                                    align-items: center;
+                                    justify-content: center;
+                                    gap: 0.5rem;
+                                    min-width: 10ch;
+                                    background-color: $main-page-color-4;
+                                    color: white;
+                                    padding: 0.5em 1em;
+                                    border-radius: 0.3rem;
+                                    font-size: $shopping-cart-buttons-font-size;
+                                }
+                                textarea {
+                                    overflow: hidden;
+                                    font-family: "iranSens", sans-serif;
+                                    resize: none !important;
+                                    width: calc(100% - 2em);
+                                    border: 0.1rem solid rgba(0, 0, 0, 0.1) !important;
+                                    outline: none !important;
+                                    border-radius: 0.3rem;
+                                    transition: all ease 0.5s;
+                                    box-shadow: 0rem 0rem 0.5rem 0.1rem transparent;
+                                    padding: 0.5em;
+                                    overflow: hidden;
+                                    height: 100%;
+                                    &:focus {
+                                        border: 0.1rem solid rgba(0, 0, 0, 0.5) !important;
+                                        box-shadow: 0rem 0rem 1rem 0.1rem rgba(0, 0, 0, 0.1);
+                                    }
+                                }
+                                * {
+                                    transition: all 0.5s ease !important;
+                                    opacity: 0 !important;
+                                    overflow: hidden !important;
+                                }
+                            }
+                            .toggle {
+                                height: 13rem;
+                                max-height: 13rem;
+                                margin-top: 1rem;
+                                opacity: 1;
+                                * {
+                                    opacity: 1 !important;
+                                }
+                            }
+                        }
+                        .feedback {
+                            width: 100%;
+                            .feedback-btn {
+                                all: unset;
+                                position: absolute;
+                                right: 2rem;
+                                top: 6rem;
+                                display: flex;
+                                flex-direction: row;
+                                gap: 0.2rem;
+                                align-items: center;
+                                justify-content: center;
+                                font-family: "BYekan";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .similar-products {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            h1 {
+                font-size: 1.4rem;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
 .user-page {
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    z-index: 2;
-    // backdrop-filter: blur(10px);
+    z-index: 7;
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
@@ -2350,5 +3380,23 @@ footer {
     to {
         transform: translateY(150%);
         visibility: hidden;
+    }
+}
+
+@keyframes markAnimation {
+    0% {
+        box-shadow: 0 0 0rem 0rem rgb(239, 113, 128);
+    }
+    25% {
+        box-shadow: 0 0 0rem 0.25rem rgba(239, 113, 128, 0.856);
+    }
+    50% {
+        box-shadow: 0 0 0rem 0.4rem rgba(234, 158, 167, 0.322);
+    }
+    75% {
+        box-shadow: 0 0 0rem 0.25rem rgba(239, 113, 128, 0);
+    }
+    100% {
+        box-shadow: 0 0 0rem 0rem rgba(239, 113, 128, 0);
     }
 }

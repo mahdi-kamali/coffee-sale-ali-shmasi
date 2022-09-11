@@ -1,10 +1,19 @@
 import { Icon } from '@iconify/react';
+import { useDispatch } from 'react-redux';
+import { setProductDetailWindow } from '../../../features/windows';
 
 
 const SlideData = (props) => {
     const data = props.data
+
+    const dispatcher = useDispatch()
+    function handleCardClick() {
+        dispatcher(setProductDetailWindow('show'))
+    }
+
+
     return (
-        <div className="card">
+        <div className="card" onClick={handleCardClick}>
             <div className="card-header">
                 <img src={data.image} alt="" />
             </div>

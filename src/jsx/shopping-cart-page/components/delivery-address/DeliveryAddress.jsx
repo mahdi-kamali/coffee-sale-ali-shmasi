@@ -8,26 +8,38 @@ const DeliveryAddress = () => {
 
     const dispatcher = useDispatch()
 
-    const step = useSelector(state => state.shoppingCart.value.steps[1].selected)
     const location = useSelector(state => state.shoppingCart.value.location)
+    const user = useSelector(state => state.user.value)
 
-    console.log(location);
 
     function handleChangeClick() {
         dispatcher(setChangeAddressWindow('show'))
     }
 
     return (
-        <section className="delivery-address">
+        <section className={`delivery-address ${user == undefined ? 'off-section' : ''}`}>
             <div className="left">
-                <button onClick={handleChangeClick} ><Icon icon="dashicons:arrow-left-alt2" color="black" />تغییر</button>
+                <button onClick={handleChangeClick} >
+                    <Icon icon="dashicons:arrow-left-alt2" color="black" />
+                    تغییر
+                </button>
             </div>
             <div className="right">
-                <h1>آدرس تحویل سفارش</h1>
-                <span>{'منطقه هفت،شهرک رازی،خ. ۱۲ متری رجایی, ک. اتحاد'} <Icon icon="akar-icons:location" color="black" /></span>
-            </div>
+                <h1>
+                    آدرس تحویل سفارش
+                    <Icon icon="akar-icons:location" color="black" />
+                </h1>
+                <span>
+                    {location ? location.mainAddress : 'آدرس اصلی مشخص نشده است'}
+                    <Icon icon="humbleicons:arrow-side-join-main" />
+                </span>
 
-            <Mark step={step} index={2} />
+                <small>
+                    {location ? location.sideAddress : 'آدرس فرعی مشخص نشده است'}
+                    <Icon icon="humbleicons:arrow-main-split-side" />
+                </small>
+            </div>
+            <Mark index={2} />
         </section>
     )
 }

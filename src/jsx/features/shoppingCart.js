@@ -29,6 +29,7 @@ export const shoppingCart = createSlice({
                 },
             ],
             location: undefined,
+            date: undefined,
             cart: [
             ]
         }
@@ -42,10 +43,13 @@ export const shoppingCart = createSlice({
         },
         setLocation: (state, action) => {
             state.value.location = action.payload
+        },
+        setDate: (state, action) => {
+            state.value.date = action.payload
         }
     }
 })
 
 export default shoppingCart.reducer;
-export const { setSteps, setLocation } = shoppingCart.actions
+export const { setSteps, setLocation ,setDate } = shoppingCart.actions
 

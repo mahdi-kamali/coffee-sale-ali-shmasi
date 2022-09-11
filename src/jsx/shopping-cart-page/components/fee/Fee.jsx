@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux"
 
 const Fee = () => {
+  const step = useSelector(state => state.shoppingCart.value.steps[3].selected)
   return (
     <div className="fee">
       <div className="all group">
@@ -33,7 +35,7 @@ const Fee = () => {
         </div>
       </div>
       <div className="buttons">
-        <button>ادامه خرید</button>
+        <button className={`${step ? 'selected' : ''}`} >ادامه خرید</button>
       </div>
     </div>
   )
