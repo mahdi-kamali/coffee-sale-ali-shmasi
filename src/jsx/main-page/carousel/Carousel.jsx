@@ -23,7 +23,6 @@ import SlideData from './components/SlideData'
 
 const Carousel = ({ count }) => {
 
-    console.log(count);
 
     const [samples, setSample] = useState([
         {

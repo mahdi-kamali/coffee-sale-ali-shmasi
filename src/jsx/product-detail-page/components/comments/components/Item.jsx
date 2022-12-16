@@ -1,10 +1,31 @@
 import { Icon } from '@iconify/react';
+import { useRef } from 'react';
 import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserWindow } from '../../../../features/windows';
 
 
 const Item = () => {
 
     const [toggle, setToggle] = useState(false)
+    const [message, setMessage] = useState("");
+    const user = useSelector(state => state.user.value)
+
+    const dispatcher = useDispatch()
+
+
+    function handleOnSend(e) {
+        if (user === undefined) {
+            dispatcher(setUserWindow({ type: 'sign-in' }))
+        } else {
+        }
+    }
+
+    function handleOnTextAreaChange(e) {
+        setMessage( e.target.value )
+    }
+
+
 
     return (
         <div className="item">
@@ -29,13 +50,13 @@ const Item = () => {
                             setToggle(!toggle)
                         }}>
                             <Icon icon="fa:mail-reply" />
-                            {toggle ? "انصراف" :'پاسخ دادن' }
+                            {toggle ? "انصراف" : 'پاسخ دادن'}
                         </button>
 
                     </div>
                     <div className={toggle ? "toggle reply-body" : "reply-body"}>
-                        <textarea ></textarea>
-                        <button className='button'>
+                        <textarea onChange={handleOnTextAreaChange} ></textarea>
+                        <button onClick={handleOnSend} className='button'>
                             ارسال
                             <Icon icon="fluent:send-28-filled" />
                         </button>
@@ -46,7 +67,7 @@ const Item = () => {
                         setToggle(!toggle)
                     }}>
                         <Icon icon="bxs:message-alt-detail" />
-                        <span>3</span> 
+                        <span>3</span>
                         +
                     </button>
                 </div>

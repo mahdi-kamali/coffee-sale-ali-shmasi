@@ -239,6 +239,23 @@ header {
             gap: 0.3rem;
             font-size: 0.8rem;
             border-radius: 0.3rem;
+            position: relative;
+            .drop-down {
+                background-color: black;
+                top: 150%;
+                left: 50%;
+                transform: translateX(-50%);
+                position: absolute;
+                color: white;
+                width: 10ch;
+                padding: 1.4em;
+                border-radius: 0.5rem;
+                div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
 
             svg {
                 width: 1.5rem;
@@ -2818,7 +2835,6 @@ label {
                             }
                            }
                         }
-                      
                         .form-left {
                             height: 100%;
                             display: flex;
@@ -2845,7 +2861,7 @@ label {
                                     &:focus {
                                         border: 0.1rem solid rgba(0, 0, 0, 0.5) !important;
                                         box-shadow: 0rem 0rem 1rem 0.1rem rgba(0, 0, 0, 0.1);
-                                        height: 20rem;
+                                        height: 16rem;
                                     }
                                 }
                                 button {
