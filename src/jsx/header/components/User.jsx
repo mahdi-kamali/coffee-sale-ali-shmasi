@@ -28,7 +28,7 @@ const User = () => {
       <button className='user' onClick={handleClickSigned}>
         {user ? user.fullName : 'ورود / ثبت نام'}
         <Icon icon="ant-design:user-outlined" color="black" />
-        <div className="drop-down">
+        {/* <div className="drop-down">
           <div className="user-panel">
             پنل کاربری
             <Icon icon="carbon:open-panel-filled-right" />
@@ -37,7 +37,7 @@ const User = () => {
             خروج
             <Icon icon="codicon:sign-out" />
           </div>
-        </div>
+        </div> */}
       </button>
     )
   }
