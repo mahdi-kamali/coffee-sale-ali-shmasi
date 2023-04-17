@@ -43,7 +43,7 @@ function App() {
     <Provider store={store}>
       <div className="App" lang='fa'  >
         <BrowserRouter >
-          <Header />
+          {/* <Header /> */}
 
           
           {/* Pop Windows */}

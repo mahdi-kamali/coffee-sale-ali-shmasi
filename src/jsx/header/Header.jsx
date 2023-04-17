@@ -9,7 +9,6 @@ import ShoppingCart from "./components/ShoppingCart"
 import TopSnap from "./components/TopSnap"
 import User from "./components/User"
 
-import { useSelector } from "react-redux/es/exports"
 
 
 const Header = () => {
@@ -22,7 +21,7 @@ const Header = () => {
     if (po < 50) {
       setTopState(true)
     }
-    if (po > 0 ) {
+    if (po > 0) {
       setTopState(false)
     }
   }

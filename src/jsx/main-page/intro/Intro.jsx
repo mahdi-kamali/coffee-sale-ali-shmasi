@@ -8,25 +8,24 @@ const Intro = () => {
 
     const [samples, setSamples] = useState([
         {
-
             svg: <Icon icon="cil:truck" color="black" />,
-            header: 'تحویل فوری محصول',
-            body: 'ارسال محصول به محض تایید و تحویل آنی پس دو روز کاری'
+            header: 'Immediate delivery',
+            body: ''
         },
         {
             svg: <Icon icon="ic:baseline-gpp-good" color="black" />,
-            header: 'تضمین سلامت فیزیکی',
-            body: 'ضمانت سالم بودن کالا از لحاض فیزیکی و بسته بندی'
+            header: 'Ensuring health',
+            body: ''
         },
         {
             svg: <Icon icon="ic:baseline-support-agent" color="black" />,
-            header: 'پشتیبانی 24 ساعته',
-            body: 'همکاران ما به صورت ۲۴ ساعته آماده‌ی پاسخگویی هستند.'
+            header: '24 hour support',
+            body: ''
         },
         {
             svg: <Icon icon="akar-icons:shipping-box-01" color="black" />,
-            header: 'ارسال رایگان به سراسر کشور',
-            body: 'برای خرید های بالای ۳۰۰  هزار تومان'
+            header: 'Free shipping',
+            body: ''
         },
     ])
 
