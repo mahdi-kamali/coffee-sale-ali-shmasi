@@ -1,4 +1,3 @@
-import { LottiePlayer } from "lottie-react";
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -7,12 +6,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 import Lottie from 'lottie-react'
-import firstSlideAnimation from 
-"../../../images/best-offers/best-offers-anima.json"
+import newProductsGif
+ from "../../../images/new-products/gif.json"
 import { Icon } from "@iconify/react";
 import { useCallback, useRef } from "react";
 
-const BestOffers = () => {
+const NewProducts = () => {
 
 
     const sliderRef = useRef(null);
@@ -30,21 +29,22 @@ const BestOffers = () => {
 
 
     return (
-        <section className="best-offers">
+        <section className="new-products">
 
             <div className="top">
                 <div className="column top-left">
                     <Lottie
                         className="lottie"
                         loop={true}
-                        animationData={firstSlideAnimation}
+                        animationData={newProductsGif}
                         play
                     />
+                    <h1>new </h1>
                 </div>
                 <div className="column top-mid">
                     <div className="title">
-                        <h1>Best Offers</h1>
-                        <small>10 Products</small>
+                        <h1>New Products</h1>
+                        <small>5 Products</small>
                     </div>
                 </div>
                 <div className="column top-right">
@@ -380,4 +380,4 @@ const BestOffers = () => {
     )
 }
 
-export default BestOffers
+export default NewProducts

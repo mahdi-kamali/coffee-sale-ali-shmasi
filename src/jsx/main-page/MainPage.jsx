@@ -1,19 +1,12 @@
-import AboutUs from './about-us/AboutUs';
-import Articles from './articles/Articles';
-import CorporateProducts from './corporate-products/CorporateProducts';
-import Discout from './discount/Discout';
-import Footer from '../footer/Footer';
-import Intro from './intro/Intro';
-import MainSlider from './main-slider/MainSlider';
-import PrimaryCategory from './primary-category/PrimaryCategory';
-import RecentProducts from './recent-products/RecentProducts';
-import SecondaryCategory from './secondary-category/SecondaryCategory';
+
 import MainIntro from './main-intro/MainIntro';
 import SearchSection from './search-section/SearchSection';
 import Poster from './poster-1/Poster';
-import Topsales from './top-sales/TopSales.jsx'
 import Benifets from './benifets/Benifets';
 import BestOffers from './best-offers/BestOffers';
+import BestOffersTwo from './best-offers-2/BestOffersTwo';
+import NewProducts from './new-products/NewProducts';
+import ProductIntroduction from './prodcut-introduction/ProductIntroduction';
 
 
 const MainPage = () => {
@@ -26,6 +19,10 @@ const MainPage = () => {
             {<Poster />}
             {<Benifets />}
             {<BestOffers />}
+            {<BestOffersTwo />}
+            {<NewProducts />}
+            {<ProductIntroduction />}
+
             {/* {<Topsales />} */}
             {/* <Intro /> */}
             {/* <PrimaryCategory /> */}
