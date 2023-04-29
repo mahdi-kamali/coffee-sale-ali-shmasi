@@ -1816,12 +1816,14 @@ label {
 }
 .main-page .product-introduction .right .comments {
   display: flex;
-  width: 50rem;
+  width: 100%;
   margin-top: 3rem;
+  max-width: 50rem;
+  margin: 0 auto;
 }
 .main-page .product-introduction .right .comments .swiper-comments {
   width: 100%;
-  padding: 1em 0;
+  padding: 2em 0;
   padding-top: 3em;
 }
 .main-page .product-introduction .right .comments .swiper-comments .slide-card {
@@ -1829,8 +1831,10 @@ label {
   display: flex;
   flex-direction: column;
   border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  opacity: 0.5;
   background-color: white;
+  transition: all 0.75s ease !important;
+  box-shadow: 0rem 0.5rem 1rem 0.1rem transparent;
 }
 .main-page .product-introduction .right .comments .swiper-comments .slide-card .card-header {
   display: flex;
@@ -1841,8 +1845,8 @@ label {
   border-radius: 100rem;
   background-color: #f1ece7;
   position: relative;
-  border: 0.75rem #f1ece7 solid;
-  left: -1rem;
+  border: 0.5rem #f1ece7 solid;
+  left: 0rem;
   top: -2rem;
 }
 .main-page .product-introduction .right .comments .swiper-comments .slide-card .card-header .card-avatar img {
@@ -1852,6 +1856,8 @@ label {
   overflow: hidden;
   -o-object-fit: cover;
      object-fit: cover;
+  box-shadow: 0rem 0rem 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
+  outline: 2px white solid;
 }
 .main-page .product-introduction .right .comments .swiper-comments .slide-card .card-header .card-user {
   display: flex;
@@ -1881,28 +1887,34 @@ label {
   font-size: 1rem;
 }
 .main-page .product-introduction .right .comments .swiper-comments .slide-card .card-body {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   opacity: 0.9rem;
   padding: 1em 0em;
   margin: 0 3em;
   margin-top: -2.5rem;
   border-top: 2px dashed rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  line-height: 1.5;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4.5; /* number of lines to show */
-  line-clamp: 4.5;
+  line-height: 1.5;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
 }
-.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-stars {
+.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-buttons .card-rating {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
 }
-.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-stars .count {
+.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-buttons .card-rating .count {
   width: 4ch;
   font-size: 1.5rem;
   background-color: #c8a177;
@@ -1913,30 +1925,61 @@ label {
   color: white;
   padding-top: 0.25em;
   padding-bottom: 0;
+  font-size: 1.5rem;
 }
-.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-stars .stars {
+.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-buttons .card-rating .stars {
   display: flex;
   align-items: center;
   background-color: rgba(200, 161, 119, 0.5098039216);
   border-radius: 100rem 100rem 0 0;
   color: white;
   padding: 0.25em 0.5em;
+  font-size: 1rem;
+  padding: 0.25em 1em;
+}
+.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-buttons .card-like, .main-page .product-introduction .right .comments .swiper-comments .slide-card .card-buttons .card-share {
+  border: 2px solid #c8a177;
+  color: #c8a177;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  transition: all 0.5s ease;
+}
+.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-buttons .card-like:hover, .main-page .product-introduction .right .comments .swiper-comments .slide-card .card-buttons .card-share:hover {
+  background-color: #c8a177;
+  color: white;
+  cursor: pointer;
 }
 .main-page .product-introduction .right .comments .swiper-comments .slide-card .card-progress {
   background-color: rgba(200, 161, 119, 0.5098039216);
-  padding: 1em 10%;
+  padding: 1.5em 10%;
   border-radius: 0 0 2rem 2rem;
 }
 .main-page .product-introduction .right .comments .swiper-comments .slide-card .card-progress .item {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
 }
 .main-page .product-introduction .right .comments .swiper-comments .slide-card .card-progress .item span {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   font-size: 1.2rem;
+  color: white;
+}
+.main-page .product-introduction .right .comments .swiper-comments .slide-card .card-progress .item span .icon {
+  font-size: 2.5rem;
+}
+.main-page .product-introduction .right .comments .swiper-comments .swiper-slide-active {
+  opacity: 1;
+  box-shadow: 0rem 0.4rem 0.5rem 0.1rem rgba(0, 0, 0, 0.15);
 }
 @keyframes move {
   0% {

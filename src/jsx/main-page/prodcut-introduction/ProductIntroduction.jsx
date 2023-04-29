@@ -25,7 +25,9 @@ const ProductIntroduction = () => {
         return <div className="item">
             <span>
                 <Icon
-                    icon="ph:coffee-fill" />
+                    className="icon"
+                    icon="line-md:buy-me-a-coffee-filled" />
+            
                 Propertie
             </span>
             <Line
@@ -103,11 +105,12 @@ const ProductIntroduction = () => {
                         effect={"coverflow"}
                         grabCursor={true}
                         centeredSlides={true}
-                        slidesPerView={2.1}
+                        slidesPerView={2.5}
+                        freeMode={false}
                         loop={false}
                         spaceBetween={15}
                         coverflowEffect={{
-                            rotate: -25,
+                            rotate: -0,
                             stretch: 0,
                             depth: 500,
                             modifier: 1,
@@ -143,24 +146,188 @@ const ProductIntroduction = () => {
                             <div className="card-body">
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. At accusamus harum, architecto quibusdam aliquid dignissimos voluptatibus quasi distinctio fugiat fugit officiis, laborum
                             </div>
-                            <div className="card-stars">
-                                <div className="count">5</div>
-                                <div className="stars">
-                                    <Icon icon="ic:round-star" />
-                                    <Icon icon="ic:round-star" />
-                                    <Icon icon="ic:round-star" />
-                                    <Icon icon="ic:round-star" />
-                                    <Icon icon="ic:round-star" />
+                            <div className="card-buttons">
+
+                                <div className="card-share">
+                                    <Icon icon="material-symbols:share-outline" />
                                 </div>
+
+                                <div className="card-rating">
+                                    <div className="count">5</div>
+                                    <div className="stars">
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                    </div>
+                                </div>
+
+                                <div className="card-like">
+                                    <Icon icon="uiw:like-o" />
+                                </div>
+
                             </div>
                             <div className="card-progress">
                                 {createTestProgress()}
                             </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide className="slide-card ">
+                            <div className="card-header">
+                                <div className="card-avatar">
+                                    <img
+                                        src={require("../../../images/avatar/b2ap3_large_ee72093c-3c01-433a-8d25-701cca06c975.jpg")}
+                                    />
+                                </div>
+                                <div className="card-user">
+                                    <div
+                                        className="card-name">
+
+                                        Mahdi kamali
+                                    </div>
+                                    <div className="card-date">
+                                        <Icon
+                                            className="icon"
+                                            icon="clarity:date-outline-badged" />
+                                        2000/2/1
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="card-body">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. At accusamus harum, architecto quibusdam aliquid dignissimos voluptatibus quasi distinctio fugiat fugit officiis, laborum
+                            </div>
                             <div className="card-buttons">
 
+                                <div className="card-share">
+                                    <Icon icon="material-symbols:share-outline" />
+                                </div>
+
+                                <div className="card-rating">
+                                    <div className="count">5</div>
+                                    <div className="stars">
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                    </div>
+                                </div>
+
+                                <div className="card-like">
+                                    <Icon icon="uiw:like-o" />
+                                </div>
+
+                            </div>
+                            <div className="card-progress">
+                                {createTestProgress()}
                             </div>
                         </SwiperSlide>
 
+                        <SwiperSlide className="slide-card ">
+                            <div className="card-header">
+                                <div className="card-avatar">
+                                    <img
+                                        src={require("../../../images/avatar/b2ap3_large_ee72093c-3c01-433a-8d25-701cca06c975.jpg")}
+                                    />
+                                </div>
+                                <div className="card-user">
+                                    <div
+                                        className="card-name">
+
+                                        Mahdi kamali
+                                    </div>
+                                    <div className="card-date">
+                                        <Icon
+                                            className="icon"
+                                            icon="clarity:date-outline-badged" />
+                                        2000/2/1
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="card-body">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. At accusamus harum, architecto quibusdam aliquid dignissimos voluptatibus quasi distinctio fugiat fugit officiis, laborum
+                            </div>
+                            <div className="card-buttons">
+
+                                <div className="card-share">
+                                    <Icon icon="material-symbols:share-outline" />
+                                </div>
+
+                                <div className="card-rating">
+                                    <div className="count">5</div>
+                                    <div className="stars">
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                    </div>
+                                </div>
+
+                                <div className="card-like">
+                                    <Icon icon="uiw:like-o" />
+                                </div>
+
+                            </div>
+                            <div className="card-progress">
+                                {createTestProgress()}
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide className="slide-card ">
+                            <div className="card-header">
+                                <div className="card-avatar">
+                                    <img
+                                        src={require("../../../images/avatar/b2ap3_large_ee72093c-3c01-433a-8d25-701cca06c975.jpg")}
+                                    />
+                                </div>
+                                <div className="card-user">
+                                    <div
+                                        className="card-name">
+
+                                        Mahdi kamali
+                                    </div>
+                                    <div className="card-date">
+                                        <Icon
+                                            className="icon"
+                                            icon="clarity:date-outline-badged" />
+                                        2000/2/1
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="card-body">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. At accusamus harum, architecto quibusdam aliquid dignissimos voluptatibus quasi distinctio fugiat fugit officiis, laborum
+                            </div>
+                            <div className="card-buttons">
+
+                                <div className="card-share">
+                                    <Icon icon="material-symbols:share-outline" />
+                                </div>
+
+                                <div className="card-rating">
+                                    <div className="count">5</div>
+                                    <div className="stars">
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                        <Icon icon="ic:round-star" />
+                                    </div>
+                                </div>
+
+                                <div className="card-like">
+                                    <Icon icon="uiw:like-o" />
+                                </div>
+
+                            </div>
+                            <div className="card-progress">
+                                {createTestProgress()}
+                            </div>
+                        </SwiperSlide>
 
                     </Swiper>
                 </div>
