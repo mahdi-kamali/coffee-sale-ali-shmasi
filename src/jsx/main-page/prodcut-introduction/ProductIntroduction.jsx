@@ -4,40 +4,93 @@
 import { Icon } from "@iconify/react"
 
 
-import { Line } from 'rc-progress';
+import { Line, Circle } from 'rc-progress';
 
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import SwiperCore from "swiper"
 
 // import required modules
-import { EffectCoverflow, Navigation, Pagination } from "swiper";
+import { EffectCoverflow, Navigation, Pagination, Autoplay } from "swiper";
+
+
+
+
+
+import LottiePlayer from 'lottie-react';
+import animationData from '../../../images/prodcut-introduction/dot-animation.json'
+
+
 
 const ProductIntroduction = () => {
+
+
+    SwiperCore.use([Autoplay]);
+
+
+    const randomIconName = [
+        "ic:round-health-and-safety",
+        "icon-park-twotone:soybean-milk-maker",
+        "ic:round-system-security-update-good",
+        "bxs:coffee-bean"
+    ]
 
 
     const createTestProgress = () => {
 
 
+
         const value = Math.random() * 100
+        const randomIconSelectIndex = Math.floor(Math.random() * randomIconName.length);
 
         return <div className="item">
             <span>
                 <Icon
                     className="icon"
-                    icon="line-md:buy-me-a-coffee-filled" />
-            
-                Propertie
+                    icon={randomIconName[randomIconSelectIndex]} />
+                <small>
+                    Propertie
+                </small>
             </span>
+
             <Line
+                className="progress-bar"
                 percent={value}
-                strokeWidth={3}
+                strokeWidth={5}
                 trailColor="transparent"
                 strokeColor=
                 {`hsl(${value}, 100%, 40%)`}
 
             />
+
+        </div>
+    }
+
+
+    const createLeftTestProgressBar = () => {
+        const value = Math.random() * 100
+        const randomIconSelectIndex = Math.floor(Math.random() * randomIconName.length);
+        return <div className="circle-progress-bar">
+            <span>
+                <Icon
+                    className="icon"
+                    icon={randomIconName[randomIconSelectIndex]} />
+                <Circle
+                    className="progress-bar"
+                    percent={value}
+                    strokeWidth={5}
+                    trailColor="transparent"
+                    strokeColor=
+                    {`hsl(${value}, 100%, 40%)`}
+
+                />
+            </span>
+            <small>
+                Propertie
+            </small>
+
+
         </div>
     }
 
@@ -64,42 +117,37 @@ const ProductIntroduction = () => {
                         <span>Lolles</span>
                     </div>
                     <div className="properties">
-                        {createTestProgress()}
-                        {createTestProgress()}
-                        {createTestProgress()}
-                        {createTestProgress()}
+                        {createLeftTestProgressBar()}
+                        {createLeftTestProgressBar()}
+                        {createLeftTestProgressBar()}
+                        {createLeftTestProgressBar()}
                     </div>
-                    <div className="buttons">
-                        <button>
-                            View Detail
-                            <Icon
-                                className="icon"
-                                icon="solar:alt-arrow-right-linear" />
-                        </button>
-                    </div>
+
+                </div>
+                <div className="info-buttons">
+                    <button>
+                        View Detail
+                        <Icon
+                            className="icon"
+                            icon="solar:alt-arrow-right-linear" />
+                    </button>
                 </div>
             </div>
             <div className="right">
                 <h1>Boost Your energy with this coffee !</h1>
-                <div className="rating">
-                    <span>5</span>
-                    <div className="stars">
-                        <Icon icon="ic:round-star" />
-                        <Icon icon="ic:round-star" />
-                        <Icon icon="ic:round-star" />
-                        <Icon icon="ic:round-star" />
-                        <Icon icon="ic:round-star" />
-                    </div>
-                </div>
                 <p>
+                    <h1>
+                        <LottiePlayer
+                            className="dot"
+                            animationData={animationData} />
+                        <span>
+                            Description
+                        </span>
+                    </h1>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, eum aspernatur laborum debitis asperiores vitae ab! Cum soluta possimus dignissimos fugiat corrupti nesciunt praesentium in modi tempore, magni sapiente facere?
                     Ullam veritatis cum, nemo qui quibusdam sint deserunt harum distinctio dolorem voluptas cumque soluta facere quae a, iure magnam ea iusto. Et libero dolorum, distinctio numquam facilis officiis iusto veritatis.
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquid illo repudiandae veritatis! Libero sequi, ratione ut, quas magni, quae ipsam enim et dignissimos amet odit quaerat neque sed doloremque!
                 </p>
-                <div className="price">
-                    $
-                    <span>1,000</span>
-                </div>
                 <div className="comments">
                     <Swiper
                         effect={"coverflow"}
@@ -108,6 +156,10 @@ const ProductIntroduction = () => {
                         slidesPerView={2.5}
                         freeMode={false}
                         loop={false}
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        }}
                         spaceBetween={15}
                         coverflowEffect={{
                             rotate: -0,
@@ -117,9 +169,12 @@ const ProductIntroduction = () => {
                             slideShadows: false,
                         }}
                         pagination={false}
-                        navigation={true}
                         modules={[EffectCoverflow, Pagination, Navigation]}
                         className="swiper-comments"
+                        navigation={{
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        }}
                     >
                         <SwiperSlide className="slide-card ">
                             <div className="card-header">
@@ -329,6 +384,17 @@ const ProductIntroduction = () => {
                             </div>
                         </SwiperSlide>
 
+                        <div className="custom-navigation">
+                            <div className="icon swiper-button-prev">
+                                <Icon
+                                    icon="ic:twotone-navigate-next"
+                                    rotate={2} />
+                            </div>
+                            <div className="icon swiper-button-next">
+                                <Icon icon="ic:twotone-navigate-next" />
+                            </div>
+                        </div>
+
                     </Swiper>
                 </div>
 
@@ -351,7 +417,7 @@ const ProductIntroduction = () => {
                 <span></span>
                 <span></span>
             </div>
-        </section>
+        </section >
     )
 }
 
